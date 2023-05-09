@@ -68,7 +68,7 @@ private with sharing class SharingRunAsTest {
             ];
 
             System.debug('==== recordsJoinedWithAccess ====');
-            System.debug(recordsJoinedWithAccess.size()); // 0... great! what I'd expect
+            System.debug(recordsJoinedWithAccess.size()); // 0
 
             UserRecordAccess[] userRecordAccessQuery = [
                 SELECT RecordId, HasReadAccess, HasEditAccess
@@ -78,9 +78,9 @@ private with sharing class SharingRunAsTest {
             ];
 
             System.debug('==== userRecordAccessQuery ====');
-            System.debug('size: ' + userRecordAccessQuery.size());  // 1... i think this is what I'd expect
-            System.debug('hasReadAccess: ' + userRecordAccessQuery[0].HasReadAccess);
-            System.debug('hasEditAccess: ' + userRecordAccessQuery[0].HasEditAccess); 
+            System.debug('size: ' + userRecordAccessQuery.size());  // 1 
+            System.debug('hasReadAccess: ' + userRecordAccessQuery[0].HasReadAccess); // false
+            System.debug('hasEditAccess: ' + userRecordAccessQuery[0].HasEditAccess); // false
 
 
             WithoutSharingQuery query = new WithoutSharingQuery();
@@ -88,20 +88,19 @@ private with sharing class SharingRunAsTest {
             UserRecordAccess[] userRecordAccessQueryWithoutSharing = query.getRecordAccess(userA.Id);
 
             System.debug('==== userRecordAccessQueryWithoutSharing ====');
-            System.debug('size: ' + userRecordAccessQueryWithoutSharing.size());
-            System.debug('hasReadAccess: ' + userRecordAccessQueryWithoutSharing[0].HasReadAccess);
-            System.debug('hasEditAccess: ' + userRecordAccessQueryWithoutSharing[0].HasEditAccess);
+            System.debug('size: ' + userRecordAccessQueryWithoutSharing.size()); // 1
+            System.debug('hasReadAccess: ' + userRecordAccessQueryWithoutSharing[0].HasReadAccess); // false
+            System.debug('hasEditAccess: ' + userRecordAccessQueryWithoutSharing[0].HasEditAccess); // false
             
             CustomObject__c[] recordsJoinedWithAccessWithoutSharing = query.getRecords();
 
             System.debug('==== recordsJoinedWithAccessWithoutSharing ====');
-            System.debug('size: ' + recordsJoinedWithAccessWithoutSharing.size()); // 1... great! what I'd expect
+            System.debug('size: ' + recordsJoinedWithAccessWithoutSharing.size()); // 1
             /* !!! WEIRD STUFF HERE !!! */
-            System.debug('hasReadAccess: ' + recordsJoinedWithAccessWithoutSharing[0].UserRecordAccess.HasReadAccess); // this returns true???
+            System.debug('hasReadAccess: ' + recordsJoinedWithAccessWithoutSharing[0].UserRecordAcces.HasReadAccess); // this returns true???
             System.debug('hasEditAccess: ' + recordsJoinedWithAccessWithoutSharing[0].UserRecordAccess.HasEditAccess); // this returns true???
         }
     }
-        // If I directly query UserRecordAccess without using System
 
     without sharing class WithoutSharingQuery {
 
