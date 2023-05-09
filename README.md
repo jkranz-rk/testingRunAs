@@ -65,6 +65,7 @@ private with sharing class SharingRunAsTest {
                     UserRecordAccess.HasReadAccess, 
                     UserRecordAccess.HasEditAccess
                 FROM CustomObject__c
+                WITH SYSTEM_MODE
             ];
 
             System.debug(results.size()); // 0... great! what I'd expect
@@ -90,7 +91,6 @@ private with sharing class SharingRunAsTest {
             return [
                 SELECT Name, UserRecordAccess.HasReadAccess, UserRecordAccess.HasEditAccess
                 FROM CustomObject__c
-                WITH SYSTEM_MODE
             ];
         }
     }

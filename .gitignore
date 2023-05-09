@@ -1,2 +1,7 @@
 .sf/**
 .sfdx/**
+.sf/deploy-cache.json
+.sf/orgs/00DDH0000006lTm2AI/maxRevision.json
+.sf/orgs/00DDH0000006lTm2AI/localSourceTracking/index
+.sf/orgs/00DDH0000006lTm2AI/localSourceTracking/refs/heads/main
+.sfdx/tools/testresults/apex/test-run-id.txt

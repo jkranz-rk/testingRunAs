@@ -1,5 +1,5 @@
 {
-  "serverMaxRevisionCounter": 16,
+  "serverMaxRevisionCounter": 32,
   "sourceMembers": {
     "Profile__Admin": {
       "serverRevisionCounter": 4,
@@ -14,8 +14,8 @@
       "isNameObsolete": false
     },
     "ApexClass__SharingRunAsTest": {
-      "serverRevisionCounter": 16,
-      "lastRetrievedFromServer": 16,
+      "serverRevisionCounter": 32,
+      "lastRetrievedFromServer": 32,
       "memberType": "ApexClass",
       "isNameObsolete": false
     },
