@@ -1,0 +1,47 @@
+{
+  "serverMaxRevisionCounter": 16,
+  "sourceMembers": {
+    "Profile__Admin": {
+      "serverRevisionCounter": 4,
+      "lastRetrievedFromServer": null,
+      "memberType": "Profile",
+      "isNameObsolete": false
+    },
+    "CustomObject__CustomObject__c": {
+      "serverRevisionCounter": 6,
+      "lastRetrievedFromServer": 6,
+      "memberType": "CustomObject",
+      "isNameObsolete": false
+    },
+    "ApexClass__SharingRunAsTest": {
+      "serverRevisionCounter": 16,
+      "lastRetrievedFromServer": 16,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "SharingReason__CustomObject__c.MySharingReason__c": {
+      "serverRevisionCounter": 7,
+      "lastRetrievedFromServer": 7,
+      "memberType": "SharingReason",
+      "isNameObsolete": false
+    },
+    "Profile__TestProfile": {
+      "serverRevisionCounter": 12,
+      "lastRetrievedFromServer": null,
+      "memberType": "Profile",
+      "isNameObsolete": false
+    },
+    "ProfileSessionSetting__TestProfile_profileSessionSetting1683592752936": {
+      "serverRevisionCounter": 10,
+      "lastRetrievedFromServer": null,
+      "memberType": "ProfileSessionSetting",
+      "isNameObsolete": false
+    },
+    "ProfilePasswordPolicy__TestProfile_profilePasswordPolicy1683592752828": {
+      "serverRevisionCounter": 9,
+      "lastRetrievedFromServer": null,
+      "memberType": "ProfilePasswordPolicy",
+      "isNameObsolete": false
+    }
+  }
+}

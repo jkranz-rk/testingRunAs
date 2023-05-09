@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject>
+    <pluralLabel>Custom Objects</pluralLabel>
+    <fullName>CustomObject__c</fullName>
+    <description>for testing runAs and custom sharing</description>
+    <enableHistory>false</enableHistory>
+    <enableActivities>false</enableActivities>
+    <enableSearch>false</enableSearch>
+    <enableFeeds>false</enableFeeds>
+    <enableReports>false</enableReports>
+    <enableBulkApi>true</enableBulkApi>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <sharingModel>Private</sharingModel>
+    <nameField>
+        <type>Text</type>
+        <label>Custom Object Name</label>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <label>Custom Object</label>
+</CustomObject>

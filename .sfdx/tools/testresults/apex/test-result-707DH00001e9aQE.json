@@ -1,0 +1,42 @@
+{
+  "summary": {
+    "outcome": "Passed",
+    "testsRan": 1,
+    "passing": 1,
+    "failing": 0,
+    "skipped": 0,
+    "passRate": "100%",
+    "failRate": "0%",
+    "skipRate": "0%",
+    "testStartTime": "Mon May 08 2023 7:41:59 PM",
+    "testExecutionTimeInMs": 1741,
+    "testTotalTimeInMs": 1741,
+    "commandTimeInMs": 156,
+    "hostname": "https://dream-connect-5924-dev-ed.scratch.my.salesforce.com",
+    "orgId": "00DDH0000006lTm2AI",
+    "username": "test-abnegwq9ezyd@example.com",
+    "testRunId": "707DH00001e9aQE",
+    "userId": "005DH000006cqhFYAQ"
+  },
+  "tests": [
+    {
+      "id": "07MDH00000IHCUE2A5",
+      "queueItemId": "709DH0000022HTTYA2",
+      "stackTrace": null,
+      "message": null,
+      "asyncApexJobId": "707DH00001e9aQEYAY",
+      "methodName": "runTest",
+      "outcome": "Pass",
+      "apexLogId": "07LDH00000Hgc1w2AB",
+      "apexClass": {
+        "id": "01pDH00000CFuJPYA1",
+        "name": "SharingRunAsTest",
+        "namespacePrefix": null,
+        "fullName": "SharingRunAsTest"
+      },
+      "runTime": 1741,
+      "testTimestamp": "2023-05-09T00:42:00.000+0000",
+      "fullName": "SharingRunAsTest.runTest"
+    }
+  ]
+}
