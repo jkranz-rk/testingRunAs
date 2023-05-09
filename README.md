@@ -59,38 +59,69 @@ private with sharing class SharingRunAsTest {
 
         System.runAs(userA) {
 
-            CustomObject__c[] results = [
+            CustomObject__c[] recordsJoinedWithAccess = [
                 SELECT 
                     Name, 
                     UserRecordAccess.HasReadAccess, 
                     UserRecordAccess.HasEditAccess
                 FROM CustomObject__c
-                WITH SYSTEM_MODE
             ];
 
-            System.debug(results.size()); // 0... great! what I'd expect
+            System.debug('==== recordsJoinedWithAccess ====');
+            System.debug(recordsJoinedWithAccess.size()); // 0... great! what I'd expect
 
-            SystemModeQuery query = new SystemModeQuery();
-            CustomObject__c[] resultsWithSystemMode = query.getRecords();
+            UserRecordAccess[] userRecordAccessQuery = [
+                SELECT RecordId, HasReadAccess, HasEditAccess
+                FROM UserRecordAccess
+                WHERE RecordId = :record.Id
+                AND UserId = :userA.Id
+            ];
 
-            System.debug(resultsWithSystemMode.size()); // 1... great! what I'd expect
+            System.debug('==== userRecordAccessQuery ====');
+            System.debug('size: ' + userRecordAccessQuery.size());  // 1... i think this is what I'd expect
+            System.debug('hasReadAccess: ' + userRecordAccessQuery[0].HasReadAccess);
+            System.debug('hasEditAccess: ' + userRecordAccessQuery[0].HasEditAccess); 
 
-            /* !!! WEIRD STUFF HERE !!! */
+
+            WithoutSharingQuery query = new WithoutSharingQuery();
             
-            System.debug(resultsWithSystemMode[0].UserRecordAccess.HasReadAccess); // this returns true???
-            System.debug(resultsWithSystemMode[0].UserRecordAccess.HasEditAccess); // this returns true???
+            UserRecordAccess[] userRecordAccessQueryWithoutSharing = query.getRecordAccess(userA.Id);
+
+            System.debug('==== userRecordAccessQueryWithoutSharing ====');
+            System.debug('size: ' + userRecordAccessQueryWithoutSharing.size());
+            System.debug('hasReadAccess: ' + userRecordAccessQueryWithoutSharing[0].HasReadAccess);
+            System.debug('hasEditAccess: ' + userRecordAccessQueryWithoutSharing[0].HasEditAccess);
+            
+            CustomObject__c[] recordsJoinedWithAccessWithoutSharing = query.getRecords();
+
+            System.debug('==== recordsJoinedWithAccessWithoutSharing ====');
+            System.debug('size: ' + recordsJoinedWithAccessWithoutSharing.size()); // 1... great! what I'd expect
+            /* !!! WEIRD STUFF HERE !!! */
+            System.debug('hasReadAccess: ' + recordsJoinedWithAccessWithoutSharing[0].UserRecordAccess.HasReadAccess); // this returns true???
+            System.debug('hasEditAccess: ' + recordsJoinedWithAccessWithoutSharing[0].UserRecordAccess.HasEditAccess); // this returns true???
         }
     }
         // If I directly query UserRecordAccess without using System
 
-    without sharing class SystemModeQuery {
+    without sharing class WithoutSharingQuery {
 
-        SystemModeQuery() {}
+        WithoutSharingQuery() {}
 
         CustomObject__c[] getRecords() { 
             return [
                 SELECT Name, UserRecordAccess.HasReadAccess, UserRecordAccess.HasEditAccess
                 FROM CustomObject__c
+            ];
+        }
+
+
+        UserRecordAccess[] getRecordAccess(String userId) {
+            Map<Id, CustomObject__c> records = new Map<Id, CustomObject__c>(getRecords());
+            return [
+                SELECT RecordId, HasReadAccess, HasEditAccess
+                FROM UserRecordAccess
+                WHERE RecordId IN :records.keySet()
+                AND UserId = :userId
             ];
         }
     }
